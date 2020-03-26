@@ -64,6 +64,11 @@ body { font-family: sans-serif; }
   height: 300px;
   z-index: 2;
 }
+.grid-item.is-expanded-grade3 {
+  width: 40%;
+  height: 300px;
+  z-index: 2;
+}
 
 .grid-item.is-expanded .grid-item-content {
   background: #F90;
@@ -110,6 +115,9 @@ body { font-family: sans-serif; }
         <div class="grid-item">
             <div class="grid-item-content" data-grade="2">grade2</div>
         </div>
+        <div class="grid-item">
+            <div class="grid-item-content" data-grade="3">grade3</div>
+        </div>
     </div>
 </div>
       
@@ -125,7 +133,7 @@ var $grid = $('.grid').masonry({
   columnWidth: '.grid-sizer',
   percentPosition: true,
   columnWidth: 100,
-  gutterWidth: 20,
+  gutterWidth: 10,
   isFitWidth: true
 });
 
@@ -144,6 +152,9 @@ console.log(itemGrade);
   } else if(itemGrade == '2') {
     $( itemElem ).toggleClass('is-expanded');
     $( itemElem ).toggleClass('is-expanded-grade2');
+  } else if(itemGrade == '3') {
+    $( itemElem ).toggleClass('is-expanded');
+    $( itemElem ).toggleClass('is-expanded-grade3');
   } else {
     $( itemElem ).toggleClass('is-expanded');
   }
