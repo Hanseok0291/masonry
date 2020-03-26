@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marsonry 테스트</title>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+<style>
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.main-wrap {
+    margin: 50px;
+}
+
+.grid {
+    margin: 0 auto;
+}
+
+/* item is invisible, but used for layout */
+.grid-item,
+.grid-sizer {
+  width: 10%;
+}
+
+.grid-item {
+  float: left;
+  height: 150px;
+  margin: 5px 0;
+}
+
+/* grid-item-content is visible, and transitions size */
+.grid-item-content {
+  width: 100%;
+  height: 100%;
+  background: #6F8FC4;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+  -webkit-transition: width 0.4s, height 0.4s;
+          transition: width 0.4s, height 0.4s;
+}
+
+.grid-item:hover .grid-item-content {
+  /* border-color: white; */
+  background: #2B43E0;
+  cursor: pointer;
+}
+
+/* both item and item content change size */
+.grid-item.is-expanded {
+  width: 20%;
+  height: 300px;
+  z-index: 2;
+}
+.grid-item.is-expanded-grade2 {
+  width: 30%;
+  height: 300px;
+  z-index: 2;
+}
+
+.grid-item.is-expanded .grid-item-content {
+  background: #F90;
+}
+
+</style>
+<body>
+<div class="main-wrap">
+    <div class="grid">
+        <div class="grid-sizer"></div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content" data-grade="1"></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content" data-grade="2"></div>
+        </div>
+    </div>
+</div>
+      
+<script src="http://code.jquery.com/jquery.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
+<script>
+// external js: masonry.pkgd.js
+
+var $grid = $('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer',
+  percentPosition: true,
+  columnWidth: 100,
+  gutterWidth: 20,
+  isFitWidth: true
+});
+
+$grid.on( 'click', '.grid-item-content', function() {
+
+  var itemContent = this;
+  setItemContentPixelSize( itemContent );
+
+  var itemElem = itemContent.parentNode;
+
+  var itemGrade = $(this).data('grade');
+//   if($(this) == )
+console.log(itemGrade);
+  if(itemGrade == '1') {
+    $( itemElem ).toggleClass('is-expanded');
+  } else if(itemGrade == '2') {
+    $( itemElem ).toggleClass('is-expanded');
+    $( itemElem ).toggleClass('is-expanded-grade2');
+  } else {
+    $( itemElem ).toggleClass('is-expanded');
+  }
+
+  // force redraw
+  var redraw = itemContent.offsetWidth;
+  // renable default transition
+  itemContent.style[ transitionProp ] = '';
+
+  addTransitionListener( itemContent );
+  setItemContentTransitionSize( itemContent, itemElem );
+
+  $grid.masonry();
+});
+
+var docElem = document.documentElement;
+var transitionProp = typeof docElem.style.transition == 'string' ?
+    'transition' : 'WebkitTransition';
+var transitionEndEvent = {
+  WebkitTransition: 'webkitTransitionEnd',
+  transition: 'transitionend'
+}[ transitionProp ];
+
+function setItemContentPixelSize( itemContent ) {
+  var previousContentSize = getSize( itemContent );
+  // disable transition
+  itemContent.style[ transitionProp ] = 'none';
+  // set current size in pixels
+  itemContent.style.width = previousContentSize.width + 'px';
+  itemContent.style.height = previousContentSize.height + 'px';
+}
+
+function addTransitionListener( itemContent ) {
+  // reset 100%/100% sizing after transition end
+  var onTransitionEnd = function() {
+    itemContent.style.width = '';
+    itemContent.style.height = '';
+    itemContent.removeEventListener( transitionEndEvent, onTransitionEnd );
+  };
+  itemContent.addEventListener( transitionEndEvent, onTransitionEnd );
+}
+
+function setItemContentTransitionSize( itemContent, itemElem ) {
+  // set new size
+  var size = getSize( itemElem );
+  itemContent.style.width = size.width + 'px';
+  itemContent.style.height = size.height + 'px';
+}
+
+
+</script>
+</body>
+</html>
