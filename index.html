@@ -26,12 +26,12 @@ body { font-family: sans-serif; }
 /* item is invisible, but used for layout */
 .grid-item,
 .grid-sizer {
-  width: 10%;
+  width: 90px;
 }
 
 .grid-item {
   float: left;
-  height: 150px;
+  height: 90px;
   margin: 5px 0;
 }
 
@@ -39,39 +39,49 @@ body { font-family: sans-serif; }
 .grid-item-content {
   width: 100%;
   height: 100%;
-  background: #6F8FC4;
+  background: #eee;
   border: 2px solid #333;
   border-color: hsla(0, 0%, 0%, 0.5);
+  text-align: center;
   border-radius: 5px;
   -webkit-transition: width 0.4s, height 0.4s;
           transition: width 0.4s, height 0.4s;
 }
 
-.grid-item:hover .grid-item-content {
-  /* border-color: white; */
-  background: #2B43E0;
-  cursor: pointer;
-}
-
 /* both item and item content change size */
 .grid-item.is-expanded {
-  width: 20%;
-  height: 300px;
+  width: 90px;
+  height: 90px;
   z-index: 2;
 }
 .grid-item.is-expanded-grade2 {
-  width: 30%;
-  height: 300px;
+  width: 180px;
+  height: 180px;
   z-index: 2;
+  background: #757575;
 }
 .grid-item.is-expanded-grade3 {
-  width: 40%;
-  height: 300px;
+  width: 270px;
+  height: 270px;
   z-index: 2;
+  background: #CACACA;
 }
 
 .grid-item.is-expanded .grid-item-content {
-  background: #F90;
+  background: transparent;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.grid-item:hover .grid-item-content {
+  /* border-color: white; */
+  background: #2A2A2A;
+  cursor: pointer;
 }
 
 </style>
@@ -82,8 +92,11 @@ body { font-family: sans-serif; }
         <div class="grid-item">
             <div class="grid-item-content">grade1</div>
         </div>
+        <div class="grid-item is-expanded is-expanded-grade2">
+            <div class="grid-item-content" data-grade="2">grade2</div>
+        </div>
         <div class="grid-item">
-            <div class="grid-item-content">grade1</div>
+            <div class="grid-item-content"><img src="https://s3-eu-west-1.amazonaws.com/malikafavre/project_thumbnails/Laureate_thumb2.gif?mtime=1476538545" alt=""></div>
         </div>
         <div class="grid-item">
             <div class="grid-item-content">grade1</div>
@@ -103,8 +116,32 @@ body { font-family: sans-serif; }
         <div class="grid-item">
             <div class="grid-item-content">grade1</div>
         </div>
+        <div class="grid-item is-expanded is-expanded-grade2">
+            <div class="grid-item-content" data-grade="2">grade2</div>
+        </div>
         <div class="grid-item">
             <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item is-expanded is-expanded-grade2">
+            <div class="grid-item-content" data-grade="2">grade2</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"><img src="https://s3-eu-west-1.amazonaws.com/malikafavre/project_thumbnails/Laureate_thumb2.gif?mtime=1476538545" alt=""></div>
+        </div>
+        <div class="grid-item is-expanded is-expanded-grade3">
+            <div class="grid-item-content" data-grade="3">grade3</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content"><img src="https://s3-eu-west-1.amazonaws.com/malikafavre/project_thumbnails/VG1.gif?mtime=1542983770" alt=""></div>
         </div>
         <div class="grid-item">
             <div class="grid-item-content">grade1</div>
@@ -112,10 +149,73 @@ body { font-family: sans-serif; }
         <div class="grid-item">
             <div class="grid-item-content" data-grade="1">grade1</div>
         </div>
+        <div class="grid-item is-expanded is-expanded-grade2">
+            <div class="grid-item-content" data-grade="2">grade2</div>
+        </div>
+        <div class="grid-item is-expanded is-expanded-grade3">
+            <div class="grid-item-content" data-grade="3">grade3</div>
+        </div>
         <div class="grid-item">
+            <div class="grid-item-content" data-grade="1">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content" data-grade="1">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content" data-grade="1">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content" data-grade="1">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content" data-grade="1">grade1</div>
+        </div>
+        <div class="grid-item is-expanded is-expanded-grade2">
             <div class="grid-item-content" data-grade="2">grade2</div>
         </div>
         <div class="grid-item">
+            <div class="grid-item-content"><img src="https://s3-eu-west-1.amazonaws.com/malikafavre/project_thumbnails/Laureate_thumb2.gif?mtime=1476538545" alt=""></div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item is-expanded is-expanded-grade2">
+            <div class="grid-item-content" data-grade="2">grade2</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item">
+            <div class="grid-item-content">grade1</div>
+        </div>
+        <div class="grid-item is-expanded is-expanded-grade3">
             <div class="grid-item-content" data-grade="3">grade3</div>
         </div>
     </div>
