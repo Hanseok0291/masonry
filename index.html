@@ -26,12 +26,12 @@ body { font-family: sans-serif; }
 /* item is invisible, but used for layout */
 .grid-item,
 .grid-sizer {
-  width: 90px;
+  width: 300px;
 }
 
 .grid-item {
   float: left;
-  height: 90px;
+  height: 100px;
   margin: 5px 0;
 }
 
@@ -50,19 +50,15 @@ body { font-family: sans-serif; }
 
 /* both item and item content change size */
 .grid-item.is-expanded {
-  width: 90px;
-  height: 90px;
   z-index: 2;
 }
 .grid-item.is-expanded-grade2 {
-  width: 180px;
-  height: 180px;
+  height: 200px;
   z-index: 2;
   background: #757575;
 }
 .grid-item.is-expanded-grade3 {
-  width: 270px;
-  height: 270px;
+  height: 400px;
   z-index: 2;
   background: #CACACA;
 }
@@ -153,7 +149,7 @@ img {
             <div class="grid-item-content" data-grade="2">grade2</div>
         </div>
         <div class="grid-item is-expanded is-expanded-grade3">
-            <div class="grid-item-content" data-grade="3">grade3</div>
+          <div class="grid-item-content"><img src="https://s3-eu-west-1.amazonaws.com/malikafavre/project_thumbnails/Laureate_thumb2.gif?mtime=1476538545" alt=""></div>
         </div>
         <div class="grid-item">
             <div class="grid-item-content" data-grade="1">grade1</div>
@@ -232,7 +228,7 @@ var $grid = $('.grid').masonry({
   itemSelector: '.grid-item',
   columnWidth: '.grid-sizer',
   percentPosition: true,
-  columnWidth: 100,
+  columnWidth: 400,
   gutterWidth: 10,
   isFitWidth: true
 });
