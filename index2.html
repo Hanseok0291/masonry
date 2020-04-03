@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marsonry 테스트</title>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+<style>
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.main-wrap {
+    margin: 50px;
+}
+
+.grid {
+  background: #EEE;
+  max-width: 1200px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+  width: 50px;
+  height: 50px;
+  float: left;
+  /* vertical gutter */
+  background: #EEEEEE;
+  border: 1px solid #333;
+  /* 
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px; */
+}
+
+.grid-item--void {background-color: #eee;border: 0;}
+.grid-item--width2 { width: 100px; background-color: #000;}
+.grid-item--width3 { width: 150px; background-color: #000;}
+.grid-item--width4 { width: 200px; background-color: #000;}
+
+.grid-item--height2 { height: 100px; background-color: #000;}
+.grid-item--height3 { height: 150px; background-color: #000;}
+.grid-item--height4 { height: 200px; background-color: #000;}
+
+
+</style>
+<body>
+<!-- <div class="grid-item is-expanded is-expanded-grade3">
+    <div class="grid-item-content" data-grade="3">grade3</div>
+</div> -->
+
+<div class="main-wrap">
+    <div class="grid">
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item grid-item--height2 grid-item--width2"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item grid-item--height3 grid-item--width3"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+
+        
+        <!-- <div class="grid-item grid-item--width2 grid-item--height2"></div>
+        <div class="grid-item grid-item--height3"></div>
+        <div class="grid-item grid-item--height2"></div>
+        <div class="grid-item grid-item--width3"></div> -->
+    </div>
+</div>
+      
+<script src="js/jquery-3.4.1.slim.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script>
+// external js: masonry.pkgd.js
+$('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: 50,
+  gutter: 0,
+  fitWidth: true
+});
+
+</script>
+</body>
+</html>
